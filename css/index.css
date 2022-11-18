@@ -1,0 +1,77 @@
+small {
+    color: var(--gris);
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1rem;
+}
+
+.image-container {
+    object-fit: fill;
+    height: 100px;
+    overflow: hidden;
+}
+
+section {
+    background-color: var(--gris-oscuro);
+}
+
+.card {
+    background-color: inherit;
+    border: none;
+}
+
+aside {
+    background-color: var(--gris-oscuro);
+}
+
+.small-square {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.cutlines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+            line-clamp: 3; 
+    -webkit-box-orient: vertical;
+}
+
+@media (min-width: 425px) {
+    .image-container {
+        height: 120px;
+    }
+}
+
+@media (min-width: 768px) {
+    h4 {
+        font-size: 1.3rem;
+    }
+
+    .carousel {
+        height: 300px;
+    }
+
+    .image-container {
+        height: 180px;
+    }
+
+    .small-square {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .small-square {
+        width: 100px;
+        height: 100px;
+    }
+}
