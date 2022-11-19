@@ -75,3 +75,18 @@ aside {
         height: 100px;
     }
 }
+
+@media (min-width: 1440px) {
+    .image-container {
+        height: 250px;
+    }
+
+    .carousel {
+        height: 350px;
+    }
+
+    .small-square {
+        width: 150px;
+        height: 100px;
+    }
+}
