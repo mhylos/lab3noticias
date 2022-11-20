@@ -73,7 +73,7 @@
                 echo '<hr class="my-1">';
             }
         ?>
-        <button type="button" class="btn btn-secondary btn-sm mt-3 d-flex">
+        <button type="button" class="btn btn-secondary btn-sm mt-3">
             <i class="bi bi-plus-square"></i>
             <span>Agregar</span>
         </button>
