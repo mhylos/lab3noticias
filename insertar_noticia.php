@@ -13,9 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css"> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
@@ -27,8 +26,8 @@
         <div class="row">
             <div class="col">
                 <!-- Formulario para insertar valores en nuestra tabla de la base de datos -->
-                <form action="insertar.php" method="POST">
-                    <table class="table table-bordered table-striped table-responsive table-hover">
+                <form action="insertar.php"method="POST">
+                    <table class="table table-bordered table-responsive">
                         <tr>
                             <td>Título</td>
                             <td><input type="text" name="titulo" style="width: 100%"></td>

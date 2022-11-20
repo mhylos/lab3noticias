@@ -15,24 +15,24 @@ include("cnn.php");
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/index.css"> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
+    <a href="index.php" type="button" class="btn btn-light btn-xl my-3">Inicio</a>
     <br>
     <h1 class="text-center">Listado de Noticias</h1>
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="">
-                    <form action="buscar_noticia.php" method="POST">
+                    <form action="buscar_noticia.php" method="POST" class="end">
                         <input type="text" name="buscar">
                         <input type="submit" value="Buscar">
                     </form>
                 </div>
-                <table class="table table-bordered table-striped table-responsive table-hover">
+                <table class="table table-bordered table-responsive">
                     <thead>
                         <tr>
                             <td>ID</td>
@@ -66,11 +66,12 @@ include("cnn.php");
                             noticia=<?php echo $mostrar[4] ?> &
                             fecha=<?php echo $mostrar[5] ?>
                             " type="button" class="btn btn-info">Editar</a>
-                                <a href="eliminar.php? id=<?php echo $mostrar[0]?>" type="button" class="btn btn-danger">Eliminar</a>
+                                <a href="eliminar.php? id=<?php echo $mostrar[0] ?>" type="button" class="btn btn-danger">Eliminar</a>
                             </td>
                         </tr>
                     <?php }
                     //Liberamos la memoria del resultado
+                    mysqli_free_result($respuesta);
                     ?>
                 </table>
                 <center><a href="insertar_noticia.php" type="button" class="text-center btn btn-primary">Insertar</a></center>

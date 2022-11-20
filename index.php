@@ -1,6 +1,5 @@
 <?php
 include("cnn.php");
-$informacion = "SELECT * FROM noticias";
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +45,8 @@ $informacion = "SELECT * FROM noticias";
                                     <img class="img-fluid" src="assets/img/social-xi-jinping-invita-boric-visita-china-1200x633.jpg" alt="">
                                 </div>
                                 <div class="titulo-container">
-                                    <h4 class="p-1">Xi Jinping invita a Boric a una visita oficial a China durante 2023</h4>
+                                    <h4 class="p-1">Xi Jinping invita a Boric a una visita oficial a China durante 2023
+                                    </h4>
                                 </div>
                             </div>
                             <div class="carousel-item">
@@ -54,7 +54,8 @@ $informacion = "SELECT * FROM noticias";
                                     <img class="img-fluid rounded-top" src="assets/img/casado_con_hijos.webp" alt="">
                                 </div>
                                 <div class="titulo-container">
-                                    <h4 class="p-1">¡Tras 15 años! Casado con Hijos regresa con nueva temporada y pronto arrancan las grabaciones</h4>
+                                    <h4 class="p-1">¡Tras 15 años! Casado con Hijos regresa con nueva temporada y pronto
+                                        arrancan las grabaciones</h4>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +77,8 @@ $informacion = "SELECT * FROM noticias";
                     <div class="col-md m-1">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title cutlines">Conductor ebrio atropelló y mató a peatón en avenida de Arica</h5>
+                                <h4 class="card-title cutlines">Conductor ebrio atropelló y mató a peatón en avenida de
+                                    Arica</h5>
                                     <small>hace 1 hora</small>
                             </div>
                         </div>
@@ -89,7 +91,8 @@ $informacion = "SELECT * FROM noticias";
                     <div class="col-md m-1">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title cutlines">Avión de Latam sufre accidente en pista de aterrizaje en aeropuerto de Perú</h5>
+                                <h4 class="card-title cutlines">Avión de Latam sufre accidente en pista de aterrizaje en
+                                    aeropuerto de Perú</h5>
                                     <small>hace 2 horas</small>
                             </div>
                         </div>
@@ -104,30 +107,33 @@ $informacion = "SELECT * FROM noticias";
                     <h2>Deportes</h2>
                     <hr>
                     <div class="row p-1">
-                            <div class="col-3 d-flex flex-column justify-content-center">
-                                <img class="small-square rounded" src="assets/img/argentina_senegal_lesiones_dias_debut_qatar_2022.jpg" alt="">
-                            </div>
-                            <div class="col">
-                                <h4 class="cutlines">Argentina y Senegal sufren por las lesiones a días del debut en Qatar 2022</h4>
-                                <small>hace 1 hora</small>
-                            </div>
+                        <div class="col-3 d-flex flex-column justify-content-center">
+                            <img class="small-square rounded" src="assets/img/argentina_senegal_lesiones_dias_debut_qatar_2022.jpg?>" alt="">
+                        </div>
+                        <div class="col">
+                            <h4 class="cutlines">Argentina y Senegal sufren por las lesiones a días del debut en Qatar
+                                2022</h4>
+                            <small>hace 1 hora</small>
+                        </div>
+
                     </div>
-                <hr>
-                <div class="row p-1">
-                    <div class="col-3 d-flex flex-column justify-content-center">
-                        <img class="small-square rounded" src="assets/img/argentina_senegal_lesiones_dias_debut_qatar_2022.jpg" alt="">
+                    <hr>
+                    <div class="row p-1">
+                        <div class="col-3 d-flex flex-column justify-content-center">
+                            <img class="small-square rounded" src="assets/img/argentina_senegal_lesiones_dias_debut_qatar_2022.jpg" alt="">
+                        </div>
+                        <div class="col">
+                            <h4 class="cutlines">Argentina y Senegal sufren por las lesiones a días del debut en Qatar
+                                2022</h4>
+                            <small>hace 1 hora</small>
+                        </div>
                     </div>
-                    <div class="col">
-                        <h4 class="cutlines">Argentina y Senegal sufren por las lesiones a días del debut en Qatar 2022</h4>
-                        <small>hace 1 hora</small>
+                    <hr>
+                    <div class="row d-flex justify-content-center p-1">
+                        <div class="col d-flex justify-content-center ">
+                            <button type="button" class="btn btn-light btn-sm btn-block"> Ver más</button>
+                        </div>
                     </div>
-                </div>
-                <hr>
-                <div class="row d-flex justify-content-center p-1">
-                    <div class="col d-flex justify-content-center ">
-                        <button type="button" class="btn btn-light btn-sm btn-block"> Ver más</button>
-                    </div>
-                </div>
 
                 </section>
             </article>
@@ -141,7 +147,8 @@ $informacion = "SELECT * FROM noticias";
                             <img class="small-square rounded" src="assets/img/social-xi-jinping-invita-boric-visita-china-1200x633.jpg" alt="">
                         </div>
                         <div class="col">
-                            <h4 class="cutlines">Xi Jinping invita a Boric a una visita oficial a China durante 2023></h4>
+                            <h4 class="cutlines">Xi Jinping invita a Boric a una visita oficial a China durante 2023>
+                            </h4>
                             <small>hace 1 hora</small>
                         </div>
                     </div>
@@ -151,7 +158,8 @@ $informacion = "SELECT * FROM noticias";
                             <img class="small-square rounded" src="assets/img/social-xi-jinping-invita-boric-visita-china-1200x633.jpg" alt="">
                         </div>
                         <div class="col">
-                            <h4 class="cutlines">Xi Jinping invita a Boric a una visita oficial a China durante 2023</h4>
+                            <h4 class="cutlines">Xi Jinping invita a Boric a una visita oficial a China durante 2023
+                            </h4>
                             <small>hace 1 hora</small>
                         </div>
                     </div>
@@ -169,7 +177,8 @@ $informacion = "SELECT * FROM noticias";
     <footer>
 
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
