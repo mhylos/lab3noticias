@@ -4,16 +4,28 @@
     --gris-oscuro: #1f1f1f;
 }
 
-*
-{
-   color: white;
-   font-family: 'Mulish', sans-serif;
+* {
+    color: white;
+    font-family: 'Mulish', sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: 700;
 }
 
 body {
     background-color: var(--color-bg);
+}
+
+input[type=text],
+input[type=date],
+input[type=submit] {
+    color: black;
+}
+
+.end {
+    display: flex;
+    justify-content: end;
 }
