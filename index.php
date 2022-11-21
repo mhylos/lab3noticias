@@ -24,10 +24,10 @@ include("cnn.php");
         <div class="row">
             <div class="col">
                 <h1>Noticias</h1>
-                <small>fecha, 1 de mes</small>
+                <small><?php echo "Fecha $day de $months[$month]" ?></small>
             </div>
             <div class="col d-sm-flex flex-row-reverse">
-                <a href="listado_noticia.php" type="button" class="btn btn-warning btn-sm my-3">Administración</a>
+                <a href="admin.php" type="button" class="btn btn-warning btn-sm my-3">Administración</a>
             </div>
         </div>
     </header>
@@ -39,24 +39,22 @@ include("cnn.php");
                     <hr>
                     <div id="recentnewsCarousel" class="carousel slide rounded" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="image-container my-2 rounded">
-                                    <img class="img-fluid" src="assets/img/social-xi-jinping-invita-boric-visita-china-1200x633.jpg" alt="">
-                                </div>
-                                <div class="titulo-container">
-                                    <h4 class="p-1">Xi Jinping invita a Boric a una visita oficial a China durante 2023
-                                    </h4>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="image-container m-1">
-                                    <img class="img-fluid rounded-top" src="assets/img/casado_con_hijos.webp" alt="">
-                                </div>
-                                <div class="titulo-container">
-                                    <h4 class="p-1">¡Tras 15 años! Casado con Hijos regresa con nueva temporada y pronto
-                                        arrancan las grabaciones</h4>
-                                </div>
-                            </div>
+                                <?php
+                                $sql = "SELECT titulo, imagen FROM tabla_noticia ORDER BY fecha DESC LIMIT 2;";
+                                $result = mysqli_query($conexion, $sql);
+                                $active = "active";
+                                while ($mostrar = mysqli_fetch_array($result)) {
+                                    echo "<div class='carousel-item $active'>";
+                                    echo "<div class='image-container my-2 rounded'>";
+                                    echo "<img class='img-fluid rounded-top' src='assets/img/$mostrar[1]' alt=''>";
+                                    echo "</div>";
+                                    echo "<div class='titulo-container'>";
+                                    echo "<h4 class='p-1'>$mostrar[0] </h4>";
+                                    echo "</div>";
+                                    echo "</div>";
+                                    $active = "";
+                                }
+                                ?>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#recentnewsCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -71,32 +69,23 @@ include("cnn.php");
             </article>
             <aside class="col-md-5 my-3 my-md-0 rounded p-2 px-md-2">
                 <h2>Otras Noticias</h2>
-                <hr>
-                <div class="row-md d-md-flex">
-                    <div class="col-md m-1">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title cutlines">Conductor ebrio atropelló y mató a peatón en avenida de
-                                    Arica</h5>
-                                    <small>hace 1 hora</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="row-md d-md-flex">
-                    <div class="col-md m-1">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title cutlines">Avión de Latam sufre accidente en pista de aterrizaje en
-                                    aeropuerto de Perú</h5>
-                                    <small>hace 2 horas</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                $sql = "SELECT titulo, imagen FROM tabla_noticia WHERE categoria NOT IN ('Deportes', 'Politica') ORDER BY fecha DESC LIMIT 3;";
+                $result = mysqli_query($conexion, $sql);
+                while ($mostrar = mysqli_fetch_array($result)) {
+                    echo "<hr>";
+                    echo "<div class='row-md d-md-flex'>";
+                    echo "<div class='col-md m-1'>";
+                    echo "<div class='card'>";
+                    echo "<div class='card-body'>";
+                    echo "<h4 class='card-title cutlines'>$mostrar[0]</h5>";
+                    echo "<small>Hace 1 horas</small>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+                ?>
             </aside>
         </div>
         <hr>
@@ -104,29 +93,22 @@ include("cnn.php");
             <article class="col-md-6 p-0 px-md-2">
                 <section class="p-2 rounded">
                     <h2>Deportes</h2>
-                    <hr>
-                    <div class="row p-1">
-                        <div class="col-3 d-flex flex-column justify-content-center">
-                            <img class="small-square rounded" src="assets/img/argentina_senegal_lesiones_dias_debut_qatar_2022.jpg?>" alt="">
-                        </div>
-                        <div class="col">
-                            <h4 class="cutlines">Argentina y Senegal sufren por las lesiones a días del debut en Qatar
-                                2022</h4>
-                            <small>hace 1 hora</small>
-                        </div>
-
-                    </div>
-                    <hr>
-                    <div class="row p-1">
-                        <div class="col-3 d-flex flex-column justify-content-center">
-                            <img class="small-square rounded" src="assets/img/argentina_senegal_lesiones_dias_debut_qatar_2022.jpg" alt="">
-                        </div>
-                        <div class="col">
-                            <h4 class="cutlines">Argentina y Senegal sufren por las lesiones a días del debut en Qatar
-                                2022</h4>
-                            <small>hace 1 hora</small>
-                        </div>
-                    </div>
+                    <?php
+                    $sql = "SELECT titulo, imagen FROM tabla_noticia WHERE categoria = 'Deportes' ORDER BY fecha DESC LIMIT 3;";
+                    $result = mysqli_query($conexion, $sql);
+                    while ($mostrar = mysqli_fetch_array($result)) {
+                        echo "<hr>";
+                        echo "<div class='row p-1'>";
+                        echo "<div class='col-3 d-flex flex-column justify-content-center'>";
+                        echo "<img class='small-square rounded' src='assets/img/$mostrar[imagen]' alt=''>";
+                        echo "</div>";
+                        echo "<div class='col'>";
+                        echo "<h4 class='cutlines'>$mostrar[titulo]</h4>";
+                        echo "<small>hace 1 hora</small>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                    ?>
                     <hr>
                     <div class="row d-flex justify-content-center p-1">
                         <div class="col d-flex justify-content-center ">
@@ -140,28 +122,24 @@ include("cnn.php");
             <article class="col-md-6 p-0 px-md-2">
                 <section class="p-2 rounded">
                     <h2>Política</h2>
-                    <hr>
-                    <div class="row p-1">
-                        <div class="col-3 d-flex flex-column justify-content-center">
-                            <img class="small-square rounded" src="assets/img/social-xi-jinping-invita-boric-visita-china-1200x633.jpg" alt="">
-                        </div>
-                        <div class="col">
-                            <h4 class="cutlines">Xi Jinping invita a Boric a una visita oficial a China durante 2023>
-                            </h4>
-                            <small>hace 1 hora</small>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row p-1">
-                        <div class="col-3 d-flex flex-column justify-content-center">
-                            <img class="small-square rounded" src="assets/img/social-xi-jinping-invita-boric-visita-china-1200x633.jpg" alt="">
-                        </div>
-                        <div class="col">
-                            <h4 class="cutlines">Xi Jinping invita a Boric a una visita oficial a China durante 2023
-                            </h4>
-                            <small>hace 1 hora</small>
-                        </div>
-                    </div>
+                    <?php
+                    $sql = "SELECT titulo, imagen FROM tabla_noticia WHERE categoria = 'Politica' ORDER BY fecha DESC LIMIT 3;";
+                    $result = mysqli_query($conexion, $sql);
+                    while ($mostrar = mysqli_fetch_array($result)) {
+
+                        echo "<hr>";
+                        echo "<div class='row p-1'>";
+                        echo "<div class='col-3 d-flex flex-column justify-content-center'>";
+                        echo "<img class='small-square rounded' src='assets/img/$mostrar[1]' alt=''>";
+                        echo "</div>";
+                        echo "<div class='col'>";
+                        echo "<h4 class='cutlines'>$mostrar[0]>";
+                        echo "</h4>";
+                        echo "<small>hace 1 hora</small>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                    ?>
                     <hr>
                     <div class="row d-flex justify-content-center p-1">
                         <div class="col d-flex justify-content-center ">
