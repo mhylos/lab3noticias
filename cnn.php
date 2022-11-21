@@ -5,6 +5,13 @@
         die("Conexión fallida: " . $conexion -> connect_error);  
     }
 
+    //Fecha y Hora
+    date_default_timezone_set('America/Santiago');
+    $months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+    $day = date("d");
+    $month = date("m") - 1;
+    $current_hour = date("G");
+    
     // CREANDO LA BASE DE DATOS noticias
     // $sql = "CREATE DATABASE noticias";
     // if ($conexion -> query($sql) === true){
@@ -21,7 +28,8 @@
     //     imagen VARCHAR(1000) NOT NULL,
     //     resumen VARCHAR(1000) NOT NULL,
     //     noticia VARCHAR(4000) NOT NULL,
-    //     fecha VARCHAR(100)
+    //     fecha DATE,
+    //     categoria VARCHAR(50) NOT NULL DEFAULT "Otra Categoria",
     //     )";
 
     // if ($conexion -> query($sql) === true){
@@ -29,4 +37,3 @@
     // } else{
     //     die("No se ha creado la tabla");
     // }
-?>
