@@ -21,5 +21,20 @@ class NoticiasDB {
         $result = $this->conn->query($sql);
         return $result;
     }
+
+    function getById($id) {
+        $this->start();
+        $sql = 'SELECT * FROM tabla_noticia WHERE id='.$id;
+        $noticia = mysqli_fetch_all($this->query($sql), MYSQLI_ASSOC);
+        $this->close();
+        return $noticia;
+    }
+
+    function deleteById($id) {
+        $this->start();
+        $sql = 'DELETE FROM tabla_noticia WHERE id='.$id;
+        $this->query($sql);
+        $this->close();
+    }
 }
 ?>
