@@ -88,24 +88,29 @@
                     <form>
                         <div class="form-group row">
                             <label class="col-3" for="idInput">ID: </label>
-                            <input class="col-8" value="" id="idInput" readonly></input>
+                            <input class="col-8" value="" id="idInput" name="id" readonly></input>
                         </div>
                         <hr>
                         <div class="form-group row">
                             <label class="col-3" for="tituloTextArea">Titulo: </label>
-                            <textarea class="col-8" id="tituloTextArea" rows="3" value=""></textarea>
+                            <textarea class="col-8" id="tituloTextArea" rows="3" value="" name="titulo"></textarea>
                         </div>
                         <div class="form-group row mt-1">
                             <label class="col-3" for="imgInput">Imagen: </label>
-                            <input type="file" class="col-8 px-0 fileinput" id="imgInput" accept=".jpg,.png,.jpeg,.webp">
+                            <div class="d-inline col-8 px-0 d-flex justify-content-center">
+                                <label for="imgInput" class="imgPreview w-50">
+                                    <img src="" class="img-fluid rounded mx-auto"  id="imgPreview" alt="">
+                                </label>
+                                <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp" name="imagen">
+                            </div>
                         </div>
                         <div class="form-group row mt-1">
                             <label class="col-3" for="resumenTextArea">Resumen: </label>
-                            <textarea class="col-8" id="resumenTextArea" rows="3"></textarea>
+                            <textarea class="col-8" id="resumenTextArea" rows="3" name="resumen"></textarea>
                         </div>
                         <div class="form-group row mt-1">
                             <label class="col-3" for="inputCat">Categoria</label>
-                            <select class="col-8" id="inputCat">
+                            <select class="col-8" id="inputCat" name="categoria">
                                 <option selected>Deportes</option>
                                 <option>Politica</option>
                                 <option>Accidentes</option>
@@ -114,18 +119,17 @@
                         </div>
                         <div class="form-group row mt-1">
                             <label class="col-3" for="noticiaTextArea">Noticia: </label>
-                            <textarea class="col-8" id="noticiaTextArea" rows="3"></textarea>
+                            <textarea class="col-8" id="noticiaTextArea" rows="3" name="noticia"></textarea>
                         </div>
-                        <div class="form-group row mt-1">
+                        <div class="form-group row mt-1 mb-3">
                             <label class="col-3" for="fechaInput">Fecha: </label>
-                            <input type="date" class="col-8" id="fechaInput"></input>
+                            <input type="date" class="col-8" id="fechaInput" name="fecha"></input>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Guardar</button>
-                </div>
                 </div>
             </div>
         </div>
