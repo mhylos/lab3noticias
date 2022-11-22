@@ -72,9 +72,16 @@ input[type="file"] {
     max-width: 80% !important;
 }
 
+label {
+    font-size: 0.8rem;
+}
+
 @media (min-width: 768px){
     .modal-lg {
         max-width: 80% !important;
+    }
+    label {
+        font-size: 1.2rem;
     }
 }
 
