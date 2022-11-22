@@ -106,6 +106,7 @@ $bd->close();
                                     <img src="" class="img-fluid rounded mx-auto"  id="imgPreview" alt="">
                                 </label>
                                 <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp" name="imagen">
+                                <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp" name="imagen" >
                             </div>
                         </div>
                         <div class="form-group row mt-1">
