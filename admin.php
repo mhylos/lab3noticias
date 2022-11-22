@@ -53,90 +53,87 @@ $bd->close();
         </div>
         <hr>
         <?php
-        while ($row = mysqli_fetch_row($result)) {
-            echo '<div class="row " id="' . $row[0] . '">';
-            echo '<div class="col-7 col-md-3">';
-            echo '<div class="d-block d-md-none text-truncate">';
-            echo '<span class="d-inline">[' . $row[0] . '] </span>';
-            echo '<span>' . $row[1] . '</span>';
-            echo '</div>';
-            echo '<span class="d-none d-md-block">' . $row[0] . '</span>';
-            echo '</div>';
-            echo '<div class="d-none col-md d-md-block">';
-            echo '<span class="crop-text">' . $row[1] . '</span>';
-            echo '</div>';
-            echo '<div class="d-none col-md-2 d-md-block">';
-            echo '<span>' . $row[6] . '</span>';
-            echo '</div>';
-            echo '<div class="col-5 col-md-2">';
-            echo '<button type="button" data-bs-toggle="modal" data-bs-target="#editModal" id="' . $row[0] . '" class="edit btn btn-outline-light btn-sm"><i class="bi bi-pencil-square"></i></button>';
-            echo '<button type="button" class="delete btn btn-danger btn-sm mx-1" id="' . $row[0] . '"><i class="bi bi-trash"></i></button>';
-            echo '</div>';
-            echo "</div>";
-            echo '<hr class="my-1">';
-        }
+            while ($row = mysqli_fetch_row($result)) {
+                echo '<div class="row " id="'.$row[0].'">';
+                    echo '<div class="col-7 col-md-3">';
+                        echo '<div class="d-block d-md-none text-truncate">';
+                            echo '<span class="d-inline">['.$row[0].'] </span>';
+                            echo '<span>'.$row[1].'</span>';
+                        echo '</div>';
+                        echo '<span class="d-none d-md-block">'.$row[0].'</span>';
+                    echo '</div>';
+                    echo '<div class="d-none col-md d-md-block">';
+                        echo '<span class="crop-text">'.$row[1].'</span>';
+                    echo '</div>';
+                    echo '<div class="d-none col-md-2 d-md-block">';
+                        echo '<span>'.$row[6].'</span>';
+                    echo '</div>';
+                    echo '<div class="col-5 col-md-2">';
+                        echo '<button type="button" data-bs-toggle="modal" data-bs-target="#editModal" id="'.$row[0].'" class="edit btn btn-outline-light btn-sm"><i class="bi bi-pencil-square"></i></button>';
+                        echo '<button type="button" class="delete btn btn-danger btn-sm mx-1" id="'.$row[0].'"><i class="bi bi-trash"></i></button>';
+                    echo '</div>';
+                echo "</div>";
+                echo '<hr class="my-1">';
+            }
         ?>
-        <a href="insertar_noticia.php" type="button" class="btn btn-secondary btn-sm mt-3">
+        <button type="button" class="btn btn-secondary btn-sm mt-3">
             <i class="bi bi-plus-square"></i>
             <span>Agregar</span>
         </a>
 
         <!--MODAL EDIT-->
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editarNoticia"
-            aria-hidden="true">
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editarNoticia" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalEditarTitulo">Editar noticia</h5>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group row">
-                                <label class="col-3" for="idInput">ID: </label>
-                                <input class="col-8" value="" id="idInput" name="id" readonly></input>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditarTitulo">Editar noticia</h5>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label class="col-3" for="idInput">ID: </label>
+                            <input class="col-8" value="" id="idInput" name="id" readonly></input>
+                        </div>
+                        <hr>
+                        <div class="form-group row">
+                            <label class="col-3" for="tituloTextArea">Titulo: </label>
+                            <textarea class="col-8" id="tituloTextArea" rows="3" value="" name="titulo"></textarea>
+                        </div>
+                        <div class="form-group row mt-1">
+                            <label class="col-3" for="imgInput">Imagen: </label>
+                            <div class="d-inline col-8 px-0 d-flex justify-content-center">
+                                <label for="imgInput" class="imgPreview w-50">
+                                    <img src="" class="img-fluid rounded mx-auto"  id="imgPreview" alt="">
+                                </label>
+                                <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp" name="imagen">
                             </div>
-                            <hr>
-                            <div class="form-group row">
-                                <label class="col-3" for="tituloTextArea">Titulo: </label>
-                                <textarea class="col-8" id="tituloTextArea" rows="3" value="" name="titulo"></textarea>
-                            </div>
-                            <div class="form-group row mt-1">
-                                <label class="col-3" for="imgInput">Imagen: </label>
-                                <div class="d-inline col-8 px-0 d-flex justify-content-center">
-                                    <label for="imgInput" class="imgPreview w-50">
-                                        <img src="" class="img-fluid rounded mx-auto" id="imgPreview" alt="">
-                                    </label>
-                                    <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp"
-                                        name="imagen">
-                                </div>
-                            </div>
-                            <div class="form-group row mt-1">
-                                <label class="col-3" for="resumenTextArea">Resumen: </label>
-                                <textarea class="col-8" id="resumenTextArea" rows="3" name="resumen"></textarea>
-                            </div>
-                            <div class="form-group row mt-1">
-                                <label class="col-3" for="inputCat">Categoria</label>
-                                <select class="col-8" id="inputCat" name="categoria">
-                                    <option selected>Deportes</option>
-                                    <option>Politica</option>
-                                    <option>Accidentes</option>
-                                    <option>Cientificas</option>
-                                </select>
-                            </div>
-                            <div class="form-group row mt-1">
-                                <label class="col-3" for="noticiaTextArea">Noticia: </label>
-                                <textarea class="col-8" id="noticiaTextArea" rows="3" name="noticia"></textarea>
-                            </div>
-                            <div class="form-group row mt-1 mb-3">
-                                <label class="col-3" for="fechaInput">Fecha: </label>
-                                <input type="date" class="col-8" id="fechaInput" name="fecha"></input>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="form-group row mt-1">
+                            <label class="col-3" for="resumenTextArea">Resumen: </label>
+                            <textarea class="col-8" id="resumenTextArea" rows="3" name="resumen"></textarea>
+                        </div>
+                        <div class="form-group row mt-1">
+                            <label class="col-3" for="inputCat">Categoria</label>
+                            <select class="col-8" id="inputCat" name="categoria">
+                                <option selected>Deportes</option>
+                                <option>Politica</option>
+                                <option>Accidentes</option>
+                                <option>Cientificas</option>
+                            </select>
+                        </div>
+                        <div class="form-group row mt-1">
+                            <label class="col-3" for="noticiaTextArea">Noticia: </label>
+                            <textarea class="col-8" id="noticiaTextArea" rows="3" name="noticia"></textarea>
+                        </div>
+                        <div class="form-group row mt-1 mb-3">
+                            <label class="col-3" for="fechaInput">Fecha: </label>
+                            <input type="date" class="col-8" id="fechaInput" name="fecha"></input>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
     </main>
