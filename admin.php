@@ -106,7 +106,7 @@
                                         <img src="assets/icons/upload.svg" class="img-fluid" alt="">
                                     </div>
                                 </label>
-                                <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp" name="imagen" required>
+                                <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp" name="imagen" >
                             </div>
                         </div>
                         <div class="form-group row mt-1">
