@@ -120,6 +120,7 @@
                                 <option>Politica</option>
                                 <option>Accidentes</option>
                                 <option>Cientificas</option>
+                                <option>Otro</option>
                             </select>
                         </div>
                         <div class="form-group row mt-1">
