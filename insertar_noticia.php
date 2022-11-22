@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <a href="listado_noticia.php" type="button" class="btn btn-warning btn-sm my-3">Administración</a>
+<a href="admin.php" type="button" class="btn btn-danger" style="margin: 20px" value="Volver"><i class="bi bi-house"> Administración</i></a>
     <br>
     <br>
     <h1 class="text-center">Insertar Noticia</h1>

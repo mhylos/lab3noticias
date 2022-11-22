@@ -12,6 +12,6 @@
     if (!$resultado) {
         echo "No se ha podido insertar los valores";
     } else {
-        header("Location: listado_noticia.php");
+        header("Location: admin.php");
     }
 ?>

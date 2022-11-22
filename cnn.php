@@ -29,7 +29,7 @@
     //     resumen VARCHAR(1000) NOT NULL,
     //     noticia VARCHAR(4000) NOT NULL,
     //     fecha DATE,
-    //     categoria VARCHAR(50) NOT NULL DEFAULT "Otra Categoria",
+    //     categoria VARCHAR(50) NOT NULL DEFAULT Otra Categoria,
     //     )";
 
     // if ($conexion -> query($sql) === true){

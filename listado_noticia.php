@@ -20,7 +20,7 @@ include("cnn.php");
 </head>
 
 <body>
-    <a href="index.php" type="button" class="btn btn-light btn-xl my-3">Inicio</a>
+    <a href="admin.php" type="button" class="btn btn-danger" style="margin: 20px" value="Volver"><i class="bi bi-house"> Administración</i></a>
     <br>
     <h1 class="text-center">Listado de Noticias</h1>
     <div class="container">

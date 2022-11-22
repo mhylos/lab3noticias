@@ -133,7 +133,7 @@ include("cnn.php");
                         echo "<img class='small-square rounded' src='assets/img/$mostrar[1]' alt=''>";
                         echo "</div>";
                         echo "<div class='col'>";
-                        echo "<h4 class='cutlines'>$mostrar[0]>";
+                        echo "<h4 class='cutlines'>$mostrar[0]";
                         echo "</h4>";
                         echo "<small>hace 1 hora</small>";
                         echo "</div>";
