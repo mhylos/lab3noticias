@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $('.edit').click(function(){
         rellenar($(this).attr('id'));
+        $('#modalTitulo').text('Editar noticia');
         $('.imgPreviewPlaceholder').addClass('d-none');
         $('#imgPreview').removeClass('d-none');
     });
@@ -13,6 +14,8 @@ $(document).ready(function() {
             confirmButtonColor: '#26272a',
             confirmButtonText: 'Sí',
             denyButtonText: 'No',
+            background: '#1f1f1f',
+            color: '#FFFFFF'
         }).then((result) => {
             if (result.isConfirmed)
                 eliminar($id);
@@ -55,6 +58,7 @@ function eliminar(id){
 }
 
 function agregar(){
+    $('#modalTitulo').text('Agregar noticia');
     $('#imgPreview').addClass('d-none');
     $('.imgPreviewPlaceholder').removeClass('d-none');
     $('form').trigger("reset");
@@ -65,15 +69,27 @@ function agregar(){
 
 $('form').on('submit',function(event){
     event.preventDefault();
-    var fd = new FormData($(this)[0]);
+    fd = new FormData($(this)[0]);
+    accion = ($('#modalTitulo').text() == 'Agregar noticia') ? 'agregar':'editar';
     $.ajax({
         data: fd,
-        url:'controller/CtrlNoticias.php?op=editar',
+        url:'controller/CtrlNoticias.php?op='+accion,
         type:'POST',
         contentType: false,
         processData: false,
         success: function(response){
-            location.reload()
+            if (response == 1) {
+                location.reload()
+            } else if(response == 'falta imagen') {
+                Swal.fire({
+                icon: 'error',
+                background: '#1f1f1f',
+                confirmButtonColor: '#d33',
+                title: 'Error...',
+                text: 'Falta subir una imagen',
+                color: '#FFFFFF'
+                })
+            }
         }
     });
 })

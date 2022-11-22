@@ -47,6 +47,7 @@
                         if (in_array($img_ex_lc, $allowed_exs)){
                             $noticiasdb->editWithIMG($id, $titulo, $img_name, $resumen, $categoria, $noticia, $fecha);
                             move_uploaded_file($tmp_name, '../assets/img/'.$img_name);
+                            echo 1;
                         } else {
                             echo "El archivo no es una imagen";
                         }
@@ -55,6 +56,7 @@
                     } 
                 } else {
                     $noticiasdb->editWithoutIMG($id, $titulo, $resumen, $categoria, $noticia, $fecha);
+                    echo 1;
                 }
             }
             break;
@@ -79,12 +81,13 @@
                         if (in_array($img_ex_lc, $allowed_exs)){
                             $noticiasdb->agregar($titulo, $img_name, $resumen, $categoria, $noticia, $fecha);
                             move_uploaded_file($tmp_name, '../assets/img/'.$img_name);
+                            echo 1;
                         } else {
                             echo "El archivo no es una imagen";
                         }
                     }
                 } else {
-                    echo 'No se subió imagen';
+                    echo 'falta imagen';
                 }
             }
             break;

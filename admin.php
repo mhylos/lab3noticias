@@ -129,7 +129,7 @@
                         </div>
                         <div class="form-group row mt-1 mb-3">
                             <label class="col-3" for="fechaInput">Fecha: </label>
-                            <input type="date" class="col-8" id="fechaInput" name="fecha" required></input>
+                            <input type="date" class="col-8" id="fechaInput" name="fecha" value="<?php echo date('Y-m-d'); ?>" required></input>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
