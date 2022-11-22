@@ -10,6 +10,7 @@ $(document).ready(function() {
         Swal.fire({
             title: '¿Está seguro que desea eliminar esta noticia?',
             showDenyButton: true,
+            confirmButtonColor: '#26272a',
             confirmButtonText: 'Sí',
             denyButtonText: 'No',
         }).then((result) => {
