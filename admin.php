@@ -79,7 +79,7 @@
 
         <!--MODAL EDIT-->
         <div class="modal fade" id="infoNoticiaModal" tabindex="-1" role="dialog" aria-labelledby="infoNoticia" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitulo">Editar noticia</h5>
@@ -106,7 +106,7 @@
                                         <img src="assets/icons/upload.svg" class="img-fluid" alt="">
                                     </div>
                                 </label>
-                                <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp" name="imagen" required>
+                                <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp" name="imagen">
                             </div>
                         </div>
                         <div class="form-group row mt-1">
