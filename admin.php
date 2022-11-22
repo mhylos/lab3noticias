@@ -25,14 +25,17 @@
 </head>
 <body class="m-5">
     <header class="d-grid mb-5">
-        <div>
-            <div>
-                <h1>Administración de Noticias</h1>
+        <div class="row justify-content-between">
+            <div class="col">
+                <h1>Administración de noticias</h1>
+            </div>
+            <div class="col text-start text-sm-end" >
+                <a href="index.php" type="button" class="btn btn-secondary btn-sm my-3">Volver</a>
             </div>
         </div>
     </header>
     <main>
-        <div class="row rounded py-1">
+        <div class="row rounded py-1" style="background-color: var(--gris-oscuro);">
             <div class="col-7 col-md-3">
                 <h2 class="d-none d-md-block">ID</h2>
                 <h2 class="d-block d-md-none">Noticia</h2>
@@ -62,7 +65,7 @@
                         echo '<span class="crop-text">'.$row[1].'</span>';
                     echo '</div>';
                     echo '<div class="d-none col-md-2 d-md-block">';
-                        echo '<span>'.$row[6].'</span>';
+                        echo '<span>'.$row[5].'</span>';
                     echo '</div>';
                     echo '<div class="col-5 col-md-2">';
                         echo '<button type="button" data-bs-toggle="modal" data-bs-target="#infoNoticiaModal" id="'.$row[0].'" class="edit btn btn-outline-light btn-sm"><i class="bi bi-pencil-square"></i></button>';
@@ -79,7 +82,7 @@
 
         <!--MODAL EDIT-->
         <div class="modal fade" id="infoNoticiaModal" tabindex="-1" role="dialog" aria-labelledby="infoNoticia" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-dialog modal-dialog-centered modal-responsive" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitulo">Editar noticia</h5>
