@@ -1,6 +1,8 @@
 $(document).ready(function() {
     $('.edit').click(function(){
         rellenar($(this).attr('id'));
+        $('.imgPreviewPlaceholder').addClass('d-none');
+        $('#imgPreview').removeClass('d-none');
     });
 
     $('.delete').click(function(){
@@ -18,6 +20,7 @@ $(document).ready(function() {
 });
 
 function rellenar(id){
+    $('.id-group').removeClass('d-none');
     $.ajax({
         data: {
             'id':id},
@@ -50,8 +53,13 @@ function eliminar(id){
     });
 }
 
-function guardarCambios(){
-    console.log("a");
+function agregar(){
+    $('#imgPreview').addClass('d-none');
+    $('.imgPreviewPlaceholder').removeClass('d-none');
+    $('form').trigger("reset");
+    $('#imgPreview').attr('src','');
+    $('.id-group').addClass('d-none');
+    $("#infoNoticiaModal").modal("show");
 }
 
 $('form').on('submit',function(event){
@@ -71,12 +79,12 @@ $('form').on('submit',function(event){
 
 $('input[type=file]').change(function(){
     var file = $(this).get(0).files[0];
-
     if(file){
         var reader = new FileReader();
-
         reader.onload = function(){
             $("#imgPreview").attr("src", reader.result);
+            $('.imgPreviewPlaceholder').addClass('d-none');
+            $('#imgPreview').removeClass('d-none');
         }
 
         reader.readAsDataURL(file);

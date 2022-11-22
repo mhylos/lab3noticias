@@ -54,5 +54,14 @@ class NoticiasDB {
         $this->query($sql);
         $this->close();
     }
+
+    function agregar($titulo, $imagen, $resumen, $categoria, $noticia, $fecha)
+    {
+        $this->start();
+        $sql = "INSERT into tabla_noticia (titulo, imagen, resumen, categoria, noticia, fecha) 
+                VALUES ('$titulo', '$imagen', '$resumen', '$categoria', '$noticia', '$fecha')";
+        $this->query($sql);
+        $this->close();
+    }
 }
 ?>

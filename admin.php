@@ -65,52 +65,57 @@
                         echo '<span>'.$row[6].'</span>';
                     echo '</div>';
                     echo '<div class="col-5 col-md-2">';
-                        echo '<button type="button" data-bs-toggle="modal" data-bs-target="#editModal" id="'.$row[0].'" class="edit btn btn-outline-light btn-sm"><i class="bi bi-pencil-square"></i></button>';
+                        echo '<button type="button" data-bs-toggle="modal" data-bs-target="#infoNoticiaModal" id="'.$row[0].'" class="edit btn btn-outline-light btn-sm"><i class="bi bi-pencil-square"></i></button>';
                         echo '<button type="button" class="delete btn btn-danger btn-sm mx-1" id="'.$row[0].'"><i class="bi bi-trash"></i></button>';
                     echo '</div>';
                 echo "</div>";
                 echo '<hr class="my-1">';
             }
         ?>
-        <button type="button" class="btn btn-secondary btn-sm mt-3">
+        <button type="button" class="agregar btn btn-secondary btn-sm mt-3" onclick="agregar()">
             <i class="bi bi-plus-square"></i>
             <span>Agregar</span>
         </button>
 
         <!--MODAL EDIT-->
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editarNoticia" aria-hidden="true">
+        <div class="modal fade" id="infoNoticiaModal" tabindex="-1" role="dialog" aria-labelledby="infoNoticia" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalEditarTitulo">Editar noticia</h5>
+                    <h5 class="modal-title" id="modalTitulo">Editar noticia</h5>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="form-group row">
+                        <div class="form-group id-group row">
                             <label class="col-3" for="idInput">ID: </label>
                             <input class="col-8" value="" id="idInput" name="id" readonly></input>
+                            <hr class="my-3">
                         </div>
-                        <hr>
+                        
                         <div class="form-group row">
                             <label class="col-3" for="tituloTextArea">Titulo: </label>
-                            <textarea class="col-8" id="tituloTextArea" rows="3" value="" name="titulo"></textarea>
+                            <textarea class="col-8" id="tituloTextArea" rows="3" value="" name="titulo" required></textarea>
                         </div>
                         <div class="form-group row mt-1">
                             <label class="col-3" for="imgInput">Imagen: </label>
                             <div class="d-inline col-8 px-0 d-flex justify-content-center">
-                                <label for="imgInput" class="imgPreview w-50">
-                                    <img src="" class="img-fluid rounded mx-auto"  id="imgPreview" alt="">
+                                <label for="imgInput" class="imgPreview d-flex justify-content-center">
+                                    <img src="" class="img-fluid rounded"  id="imgPreview" alt="">
+                                    <div class="imgPreviewPlaceholder d-flex justify-content-center gap-2">
+                                        <img src="assets/icons/image.svg" class="img-fluid" alt="">
+                                        <img src="assets/icons/upload.svg" class="img-fluid" alt="">
+                                    </div>
                                 </label>
-                                <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp" name="imagen">
+                                <input type="file" id="imgInput" class="d-none" accept=".jpg,.png,.jpeg,.webp" name="imagen" required>
                             </div>
                         </div>
                         <div class="form-group row mt-1">
                             <label class="col-3" for="resumenTextArea">Resumen: </label>
-                            <textarea class="col-8" id="resumenTextArea" rows="3" name="resumen"></textarea>
+                            <textarea class="col-8" id="resumenTextArea" rows="3" name="resumen" required></textarea>
                         </div>
                         <div class="form-group row mt-1">
                             <label class="col-3" for="inputCat">Categoria</label>
-                            <select class="col-8" id="inputCat" name="categoria">
+                            <select class="col-8" id="inputCat" name="categoria" required>
                                 <option selected>Deportes</option>
                                 <option>Politica</option>
                                 <option>Accidentes</option>
@@ -119,11 +124,11 @@
                         </div>
                         <div class="form-group row mt-1">
                             <label class="col-3" for="noticiaTextArea">Noticia: </label>
-                            <textarea class="col-8" id="noticiaTextArea" rows="3" name="noticia"></textarea>
+                            <textarea class="col-8" id="noticiaTextArea" rows="3" name="noticia" required></textarea>
                         </div>
                         <div class="form-group row mt-1 mb-3">
                             <label class="col-3" for="fechaInput">Fecha: </label>
-                            <input type="date" class="col-8" id="fechaInput" name="fecha"></input>
+                            <input type="date" class="col-8" id="fechaInput" name="fecha" required></input>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
