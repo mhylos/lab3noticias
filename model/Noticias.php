@@ -18,50 +18,42 @@ class NoticiasDB {
     }
 
     function query($sql) {
+        $this->start();
         $result = $this->conn->query($sql);
+        $this->close();
         return $result;
     }
 
     function getById($id) {
-        $this->start();
         $sql = 'SELECT * FROM tabla_noticia WHERE id='.$id;
         $noticia = mysqli_fetch_all($this->query($sql), MYSQLI_ASSOC);
-        $this->close();
         return $noticia;
     }
 
     function deleteById($id) {
-        $this->start();
         $sql = 'DELETE FROM tabla_noticia WHERE id='.$id;
         $this->query($sql);
-        $this->close();
     }
 
     function editWithoutIMG($id, $titulo, $resumen, $categoria, $noticia, $fecha) {
-        $this->start();
         $sql = 'UPDATE tabla_noticia
                 SET titulo="'.$titulo.'", resumen="'.$resumen.'", categoria="'.$categoria.'", noticia="'.$noticia.'", fecha="'.$fecha.'"
                 WHERE id='.$id;
         $this->query($sql);
-        $this->close();
     }
 
     function editWithIMG($id, $titulo, $imagen, $resumen, $categoria, $noticia, $fecha) {
-        $this->start();
         $sql = 'UPDATE tabla_noticia
                 SET titulo="'.$titulo.'", imagen="'.$imagen.'", resumen="'.$resumen.'", categoria="'.$categoria.'", noticia="'.$noticia.'", fecha="'.$fecha.'"
                 WHERE id='.$id;
         $this->query($sql);
-        $this->close();
     }
 
     function agregar($titulo, $imagen, $resumen, $categoria, $noticia, $fecha)
     {
-        $this->start();
         $sql = "INSERT into tabla_noticia (titulo, imagen, resumen, categoria, noticia, fecha) 
                 VALUES ('$titulo', '$imagen', '$resumen', '$categoria', '$noticia', '$fecha')";
         $this->query($sql);
-        $this->close();
     }
 }
 ?>

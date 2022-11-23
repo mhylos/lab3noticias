@@ -91,5 +91,25 @@
                 }
             }
             break;
+        case 'load_more':
+            $cant = $_POST['cant'];
+            $category = $_POST['category'];
+            $html = "";
+            $sql = "SELECT titulo, imagen, fecha FROM tabla_noticia WHERE LOWER(categoria) = '$category' ORDER BY fecha DESC LIMIT $cant;";
+            $result = $noticiasdb -> query($sql);
+            while ($mostrar = mysqli_fetch_array($result)) {
+                $html.="<hr>";
+                $html.="<div class='row p-1'>";
+                $html.="  <div class='col-3 d-flex flex-column justify-content-center'>";
+                $html.="      <img class='small-square rounded' src='assets/img/$mostrar[imagen]' alt=''>";
+                $html.="  </div>";
+                $html.="  <div class='col'>";
+                $html.="      <h4 class='cutlines'>$mostrar[titulo]</h4>";
+                $html.="      <small>$mostrar[2]</small>";
+                $html.="  </div>";
+                $html.="</div>";
+            };
+            echo $html;
+
+            break;
     }
-?>

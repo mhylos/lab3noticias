@@ -38,23 +38,23 @@ include("cnn.php");
                     <h2>Noticias recientes</h2>
                     <hr>
                     <div id="recentnewsCarousel" class="carousel slide rounded" data-ride="carousel">
-                        <div class="carousel-inner">
-                                <?php
-                                $sql = "SELECT titulo, imagen FROM tabla_noticia ORDER BY fecha DESC LIMIT 2;";
-                                $result = mysqli_query($conexion, $sql);
-                                $active = "active";
-                                while ($mostrar = mysqli_fetch_array($result)) {
-                                    echo "<div class='carousel-item $active'>";
-                                    echo "<div class='image-container my-2 rounded'>";
-                                    echo "<img class='img-fluid rounded-top' src='assets/img/$mostrar[1]' alt=''>";
-                                    echo "</div>";
-                                    echo "<div class='titulo-container'>";
-                                    echo "<h4 class='p-1'>$mostrar[0] </h4>";
-                                    echo "</div>";
-                                    echo "</div>";
-                                    $active = "";
-                                }
-                                ?>
+                        <div class="carousel-inner text-center">
+                            <?php
+                            $sql = "SELECT titulo, imagen FROM tabla_noticia ORDER BY fecha DESC LIMIT 3    ;";
+                            $result = mysqli_query($conexion, $sql);
+                            $active = "active";
+                            while ($mostrar = mysqli_fetch_array($result)) {
+                                echo "<div class='carousel-item $active'>";
+                                echo "  <div class='image-container my-2 rounded'>";
+                                echo "      <img class='img-fluid rounded-top' src='assets/img/$mostrar[1]' alt=''>";
+                                echo "  </div>";
+                                echo "  <div class='titulo-container text-start'>";
+                                echo "      <h4 class='p-1'>$mostrar[0] </h4>";
+                                echo "  </div>";
+                                echo "</div>";
+                                $active = "";
+                            }
+                            ?>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#recentnewsCarousel" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -75,14 +75,14 @@ include("cnn.php");
                 while ($mostrar = mysqli_fetch_array($result)) {
                     echo "<hr>";
                     echo "<div class='row-md d-md-flex'>";
-                    echo "<div class='col-md m-1'>";
-                    echo "<div class='card'>";
-                    echo "<div class='card-body'>";
-                    echo "<h4 class='card-title cutlines'>$mostrar[0]</h5>";
-                    echo "<small>Hace 1 horas</small>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
+                    echo "  <div class='col-md m-1'>";
+                    echo "      <div class='card'>";
+                    echo "          <div class='card-body'>";
+                    echo "              <h4 class='card-title cutlines'>$mostrar[0]</h5>";
+                    echo "              <small>Hace 1 horas</small>";
+                    echo "          </div>";
+                    echo "      </div>";
+                    echo "  </div>";
                     echo "</div>";
                 }
                 ?>
@@ -91,59 +91,60 @@ include("cnn.php");
         <hr>
         <div class="row">
             <article class="col-md-6 p-0 px-md-2">
-                <section class="p-2 rounded">
+                <section class="p-2 rounded" id="">
                     <h2>Deportes</h2>
-                    <?php
-                    $sql = "SELECT titulo, imagen FROM tabla_noticia WHERE categoria = 'Deportes' ORDER BY fecha DESC LIMIT 3;";
-                    $result = mysqli_query($conexion, $sql);
-                    while ($mostrar = mysqli_fetch_array($result)) {
-                        echo "<hr>";
-                        echo "<div class='row p-1'>";
-                        echo "<div class='col-3 d-flex flex-column justify-content-center'>";
-                        echo "<img class='small-square rounded' src='assets/img/$mostrar[imagen]' alt=''>";
-                        echo "</div>";
-                        echo "<div class='col'>";
-                        echo "<h4 class='cutlines'>$mostrar[titulo]</h4>";
-                        echo "<small>hace 1 hora</small>";
-                        echo "</div>";
-                        echo "</div>";
-                    }
-                    ?>
+                    <div id="deportes">
+                        <?php
+                        $sql = "SELECT titulo, imagen, fecha FROM tabla_noticia WHERE LOWER(categoria) = 'deportes' ORDER BY fecha DESC LIMIT 3;";
+                        $result = mysqli_query($conexion, $sql);
+                        while ($mostrar = mysqli_fetch_array($result)) {
+                            echo "<hr>";
+                            echo "<div class='row p-1'>";
+                            echo "  <div class='col-3 d-flex flex-column justify-content-center'>";
+                            echo "      <img class='small-square rounded' src='assets/img/$mostrar[imagen]' alt=''>";
+                            echo "  </div>";
+                            echo "  <div class='col'>";
+                            echo "      <h4 class='cutlines'>$mostrar[titulo]</h4>";
+                            echo "      <small>$mostrar[2]</small>";
+                            echo "  </div>";
+                            echo "</div>";
+                        }
+                        ?>
+                    </div>
                     <hr>
                     <div class="row d-flex justify-content-center p-1">
                         <div class="col d-flex justify-content-center ">
-                            <button type="button" class="btn btn-light btn-sm btn-block"> Ver más</button>
+                            <button type="button" class="btn btn-light btn-sm btn-block" onclick="update('deportes')"> Ver más</button>
                         </div>
                     </div>
-
                 </section>
             </article>
             <hr class="d-md-none my-3">
             <article class="col-md-6 p-0 px-md-2">
                 <section class="p-2 rounded">
                     <h2>Política</h2>
-                    <?php
-                    $sql = "SELECT titulo, imagen FROM tabla_noticia WHERE categoria = 'Politica' ORDER BY fecha DESC LIMIT 3;";
-                    $result = mysqli_query($conexion, $sql);
-                    while ($mostrar = mysqli_fetch_array($result)) {
-
-                        echo "<hr>";
-                        echo "<div class='row p-1'>";
-                        echo "<div class='col-3 d-flex flex-column justify-content-center'>";
-                        echo "<img class='small-square rounded' src='assets/img/$mostrar[1]' alt=''>";
-                        echo "</div>";
-                        echo "<div class='col'>";
-                        echo "<h4 class='cutlines'>$mostrar[0]";
-                        echo "</h4>";
-                        echo "<small>hace 1 hora</small>";
-                        echo "</div>";
-                        echo "</div>";
-                    }
-                    ?>
+                    <div id="politica">
+                        <?php
+                        $sql = "SELECT titulo, imagen, fecha FROM tabla_noticia WHERE LOWER(categoria) = 'politica' ORDER BY fecha DESC LIMIT 3;";
+                        $result = mysqli_query($conexion, $sql);
+                        while ($mostrar = mysqli_fetch_array($result)) {
+                            echo "<hr>";
+                            echo "<div class='row p-1'>";
+                            echo "  <div class='col-3 d-flex flex-column justify-content-center'>";
+                            echo "      <img class='small-square rounded' src='assets/img/$mostrar[1]' alt=''>";
+                            echo "  </div>";
+                            echo "  <div class='col'>";
+                            echo "      <h4 class='cutlines'>$mostrar[0]</h4>";
+                            echo "      <small>$mostrar[2]</small>";
+                            echo "  </div>";
+                            echo "</div>";
+                        }
+                        ?>
+                    </div>
                     <hr>
                     <div class="row d-flex justify-content-center p-1">
                         <div class="col d-flex justify-content-center ">
-                            <button type="button" class="btn btn-light btn-sm btn-block"> Ver más</button>
+                            <button type="button" class="btn btn-light btn-sm btn-block" onclick="update('politica')"> Ver más</button>
                         </div>
                     </div>
 
@@ -156,6 +157,8 @@ include("cnn.php");
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>

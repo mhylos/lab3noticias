@@ -3,9 +3,9 @@
 
     $bd = new NoticiasDB();
     $query = "SELECT * FROM tabla_noticia";
-    $bd->start();
+    // $bd->start();
     $result = $bd->query($query);
-    $bd->close();
+    // $bd->close();
 ?>
 
 <!DOCTYPE html>
