@@ -34,7 +34,7 @@ CREATE TABLE `tabla_noticia` (
   `resumen` varchar(1000) NOT NULL,
   `noticia` varchar(4000) NOT NULL,
   `fecha` date NOT NULL,
-  `categoria` varchar(50) NOT NULL DEFAULT 'Otra Categoría'
+  `categoria` varchar(50) NOT NULL DEFAULT 'Otro'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
