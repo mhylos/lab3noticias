@@ -101,7 +101,8 @@ $('form').on('submit',function(event){
         processData: false,
         success: function(response){
             if (response == 1) {
-                location.reload()
+                rellenar_tabla();
+                $("#infoNoticiaModal").modal("hide");
             } else if(response == 'falta imagen') {
                 Swal.fire({
                 icon: 'error',
