@@ -108,7 +108,7 @@ include("cnn.php");
                             echo "      <h4 class='cutlines'>$mostrar[titulo]</h4>";
                             echo "      <small>$mostrar[2]</small>";
                             echo "  </div>";
-                            echo "</div>";
+                            echo "</div> ";
                         }
                         ?>
                     </div>

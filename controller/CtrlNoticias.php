@@ -121,7 +121,7 @@
                 $html.="      <h4 class='cutlines'>$noticia[titulo]</h4>";
                 $html.="      <small>$noticia[2]</small>";
                 $html.="  </div>";
-                $html.="</div>";
+                $html.="</div> ";
             };
             echo $html;
 
