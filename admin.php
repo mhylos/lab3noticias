@@ -35,6 +35,16 @@
         </div>
     </header>
     <main>
+        <div class="barra-busqueda d-flex flex-column flex-md-row">
+            <div class="input-group mb-3">
+                <input id="inputBuscar" type="text" class="form-control" placeholder="Titulo, ID o fecha" aria-label="Buscar" aria-describedby="basic-addon2">
+                <button class="btn btn-outline-secondary" type="button" onclick="buscar()">Buscar</button>
+            </div>
+            <div class="text-center pb-2">
+                <button class="btn btn-outline-secondary mx-2" type="button" onclick="rellenar_tabla()">Reset</button>
+            </div>
+        </div>
+
         <div class="row rounded py-1" style="background-color: var(--gris-oscuro);">
             <div class="col-7 col-md-3">
                 <h2 class="d-none d-md-block">ID</h2>
@@ -51,36 +61,15 @@
             </div>
         </div>
         <hr>
-        <?php
-            while ($row = mysqli_fetch_row($result)) {
-                echo '<div class="row " id="'.$row[0].'">';
-                    echo '<div class="col-7 col-md-3">';
-                        echo '<div class="d-block d-md-none text-truncate">';
-                            echo '<span class="d-inline">['.$row[0].'] </span>';
-                            echo '<span>'.$row[1].'</span>';
-                        echo '</div>';
-                        echo '<span class="d-none d-md-block">'.$row[0].'</span>';
-                    echo '</div>';
-                    echo '<div class="d-none col-md d-md-block">';
-                        echo '<span class="crop-text">'.$row[1].'</span>';
-                    echo '</div>';
-                    echo '<div class="d-none col-md-2 d-md-block">';
-                        echo '<span>'.$row[5].'</span>';
-                    echo '</div>';
-                    echo '<div class="col-5 col-md-2">';
-                        echo '<button type="button" data-bs-toggle="modal" data-bs-target="#infoNoticiaModal" id="'.$row[0].'" class="edit btn btn-outline-light btn-sm"><i class="bi bi-pencil-square"></i></button>';
-                        echo '<button type="button" class="delete btn btn-danger btn-sm mx-1" id="'.$row[0].'"><i class="bi bi-trash"></i></button>';
-                    echo '</div>';
-                echo "</div>";
-                echo '<hr class="my-1">';
-            }
-        ?>
+        <div id="contentTable">
+        <!--CONTENIDO TABLA-->
+        </div>
         <button type="button" class="agregar btn btn-secondary btn-sm mt-3" onclick="agregar()">
             <i class="bi bi-plus-square"></i>
             <span>Agregar</span>
         </button>
 
-        <!--MODAL EDIT-->
+        <!--MODAL-->
         <div class="modal fade" id="infoNoticiaModal" tabindex="-1" role="dialog" aria-labelledby="infoNoticia" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-responsive" role="document">
                 <div class="modal-content">

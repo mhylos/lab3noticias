@@ -24,6 +24,13 @@ class NoticiasDB {
         return $result;
     }
 
+    function getAll()
+    {
+        $sql = "SELECT * FROM tabla_noticia;";
+        $results = $this->query($sql);
+        return $results;
+    }
+
     function getById($id) {
         $sql = 'SELECT * FROM tabla_noticia WHERE id='.$id;
         $noticia = mysqli_fetch_all($this->query($sql), MYSQLI_ASSOC);
@@ -54,6 +61,13 @@ class NoticiasDB {
         $sql = "INSERT into tabla_noticia (titulo, imagen, resumen, categoria, noticia, fecha) 
                 VALUES ('$titulo', '$imagen', '$resumen', '$categoria', '$noticia', '$fecha')";
         $this->query($sql);
+    }
+
+    function buscar($string)
+    {
+        $sql = "SELECT id, titulo, fecha FROM tabla_noticia WHERE id = '$string' OR LOWER(titulo) LIKE LOWER('%$string%') OR fecha = ('$string');";
+        $results = $this->query($sql);
+        return $results;
     }
 }
 ?>

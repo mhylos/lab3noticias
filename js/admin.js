@@ -1,26 +1,5 @@
 $(document).ready(function() {
-    $('.edit').click(function(){
-        rellenar($(this).attr('id'));
-        $('#modalTitulo').text('Editar noticia');
-        $('.imgPreviewPlaceholder').addClass('d-none');
-        $('#imgPreview').removeClass('d-none');
-    });
-
-    $('.delete').click(function(){
-        $id = $(this).attr('id');
-        Swal.fire({
-            title: '¿Está seguro que desea eliminar esta noticia?',
-            showDenyButton: true,
-            confirmButtonColor: '#26272a',
-            confirmButtonText: 'Sí',
-            denyButtonText: 'No',
-            background: '#1f1f1f',
-            color: '#FFFFFF'
-        }).then((result) => {
-            if (result.isConfirmed)
-                eliminar($id);
-        });
-    });
+    rellenar_tabla();
 });
 
 function rellenar(id){
@@ -52,7 +31,7 @@ function eliminar(id){
         url:'controller/CtrlNoticias.php?op=eliminarNoticiaPorId',
         type:'POST',
         success: function(response){
-            location.reload()
+            rellenar_tabla();
         }
     });
 }
@@ -67,6 +46,49 @@ function agregar(){
     $("#infoNoticiaModal").modal("show");
 }
 
+function buscar(){
+    string = $('#inputBuscar').val();
+    if (string) {
+        $.ajax({
+            data: {
+                'string':string
+            },
+            url:'controller/CtrlNoticias.php?op=buscar',
+            type:'POST',
+            success: function(response){
+                if (response != 0){
+                    data = $.parseJSON(response);
+                    html = '';
+                    data.forEach(element => {
+                        html += generateRowHTML(element);
+                    });
+                    $('#contentTable').html(html)
+                }
+            }
+        });
+    }
+}
+
+function rellenar_tabla(){
+    $.ajax({
+        url:'controller/CtrlNoticias.php?op=obtNoticias',
+        type:'POST',
+        success: function(response){
+            data = $.parseJSON(response);
+            html = '';
+            data.forEach(element => {
+                html += generateRowHTML(element);
+            });
+            $('#contentTable').html(html)
+            create_row_listeners();
+        }
+    });
+}
+
+
+/////////////
+//LISTENERS//
+/////////////
 $('form').on('submit',function(event){
     event.preventDefault();
     fd = new FormData($(this)[0]);
@@ -107,3 +129,53 @@ $('input[type=file]').change(function(){
         reader.readAsDataURL(file);
     }
 });
+
+function create_row_listeners(){
+    $('.edit').click(function(){
+        rellenar($(this).attr('id'));
+        $('#modalTitulo').text('Editar noticia');
+        $('.imgPreviewPlaceholder').addClass('d-none');
+        $('#imgPreview').removeClass('d-none');
+    });
+
+    $('.delete').click(function(){
+        $id = $(this).attr('id');
+        Swal.fire({
+            title: '¿Está seguro que desea eliminar esta noticia?',
+            showDenyButton: true,
+            confirmButtonColor: '#26272a',
+            confirmButtonText: 'Sí',
+            denyButtonText: 'No',
+            background: '#1f1f1f',
+            color: '#FFFFFF'
+        }).then((result) => {
+            if (result.isConfirmed)
+                eliminar($id);
+        });
+    });
+}
+
+function generateRowHTML(element){
+    html = '';
+    html += '<div class="row " id="'+element.id+'">';
+    html += '<div class="col-7 col-md-3">';
+    html +=     '<div class="d-block d-md-none text-truncate">';
+    html +=         '<span class="d-inline">['+element.id+'] </span>';
+    html +=         '<span>'+element.titulo+'</span>';
+    html +=     '</div>';
+    html +=     '<span class="d-none d-md-block">'+element.id+'</span>';
+    html += '</div>';
+    html += '<div class="d-none col-md d-md-block">';
+    html +=     '<span class="crop-text">'+element.titulo+'</span>';
+    html += '</div>';
+    html += '<div class="d-none col-md-2 d-md-block">';
+    html +=     '<span>'+element.fecha+'</span>';
+    html += '</div>';
+    html += '<div class="col-5 col-md-2">';
+    html +=     '<button type="button" data-bs-toggle="modal" data-bs-target="#infoNoticiaModal" id="'+element.id+'" class="edit btn btn-outline-light btn-sm"><i class="bi bi-pencil-square"></i></button>';
+    html +=     '<button type="button" class="delete btn btn-danger btn-sm mx-1" id="'+element.id+'"><i class="bi bi-trash"></i></button>';
+    html += '</div>';
+    html += "</div>";
+    html += '<hr class="my-1">';
+    return html;
+}

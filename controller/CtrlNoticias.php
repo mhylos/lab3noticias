@@ -4,6 +4,19 @@
     $noticiasdb = new NoticiasDB();
 
     switch($_REQUEST["op"]){
+        case 'obtNoticias':
+            $result = $noticiasdb->getAll();
+            while ($noticia = mysqli_fetch_array($result)) {
+                $data[]=array(
+                    'id'=>$noticia['id'],
+                    'titulo'=>$noticia['titulo'],
+                    'fecha'=>$noticia['fecha']);
+                $json_data = json_encode($data);
+            }
+            echo $json_data;   
+            break;
+            
+
         case 'obtNoticiaPorId':
             if(isset($_POST['id'])){
                 $noticia = $noticiasdb->getById($_POST['id']);
@@ -14,7 +27,7 @@
                     'resumen'=>$noticia[0]['resumen'],
                     'categoria'=>$noticia[0]['categoria'],
                     'noticia'=>$noticia[0]['noticia'],
-                    'fecha'=>$noticia[0]['fecha'],
+                    'fecha'=>$noticia[0]['fecha']
                 );
                 echo json_encode($data);
             }
@@ -91,25 +104,45 @@
                 }
             }
             break;
+
         case 'load_more':
             $cant = $_POST['cant'];
             $category = $_POST['category'];
             $html = "";
             $sql = "SELECT titulo, imagen, fecha FROM tabla_noticia WHERE LOWER(categoria) = '$category' ORDER BY fecha DESC LIMIT $cant;";
             $result = $noticiasdb -> query($sql);
-            while ($mostrar = mysqli_fetch_array($result)) {
+            while ($noticia = mysqli_fetch_array($result)) {
                 $html.="<hr>";
                 $html.="<div class='row p-1'>";
                 $html.="  <div class='col-3 d-flex flex-column justify-content-center'>";
-                $html.="      <img class='small-square rounded' src='assets/img/$mostrar[imagen]' alt=''>";
+                $html.="      <img class='small-square rounded' src='assets/img/$noticia[imagen]' alt=''>";
                 $html.="  </div>";
                 $html.="  <div class='col'>";
-                $html.="      <h4 class='cutlines'>$mostrar[titulo]</h4>";
-                $html.="      <small>$mostrar[2]</small>";
+                $html.="      <h4 class='cutlines'>$noticia[titulo]</h4>";
+                $html.="      <small>$noticia[2]</small>";
                 $html.="  </div>";
                 $html.="</div>";
             };
             echo $html;
+
+            break;
+
+        case 'buscar':
+            $string = $_POST['string'];
+            $result = $noticiasdb->buscar($string);
+            if (mysqli_num_rows($result) == 0) {
+                echo 0;
+                break;
+            }
+            $lista_noticias = array();
+            while ($noticia = mysqli_fetch_array($result)) {
+                $data[]=array(
+                    'id'=>$noticia['id'],
+                    'titulo'=>$noticia['titulo'],
+                    'fecha'=>$noticia['fecha']);
+                $json_data = json_encode($data);
+            }
+            echo $json_data;   
 
             break;
     }
