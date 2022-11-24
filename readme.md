@@ -8,6 +8,8 @@ Desarrollado por:
 + Juan Perez @juanpetico
 + Camilo Valenzuela @mhylos
 
+*Agradecimientos a @roby251 por permitirnos llevar a cabo este proyecto*
+
 ## Requerimientos
 - [x]  PHPMyAdmin base de datos
 - [x] Tabla de noticias (id, titulo, imagen, resumen, categoría, noticia, fecha)
