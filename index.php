@@ -28,7 +28,7 @@ include("cnn.php");
                 <small><?php echo "Fecha $day de $months[$month]" ?></small>
             </div>
             <div class="col d-sm-flex flex-row-reverse">
-                <a href="admin.php" type="button" class="btn btn-warning btn-sm my-3">Administración</a>
+                <a href="admin.php" type="button" class="btn btn-warning btn-sm my-3 py-md-2">Administración</a>
             </div>
         </div>
     </header>
@@ -41,7 +41,7 @@ include("cnn.php");
                     <div id="recentnewsCarousel" class="carousel slide rounded" data-bs-ride="carousel">
                         <div class="carousel-inner text-center">
                             <?php
-                            $sql = "SELECT titulo, imagen FROM tabla_noticia ORDER BY fecha DESC LIMIT 3    ;";
+                            $sql = "SELECT titulo, imagen FROM tabla_noticia ORDER BY fecha DESC LIMIT 3;";
                             $result = mysqli_query($conexion, $sql);
                             $active = "active";
                             while ($mostrar = mysqli_fetch_array($result)) {
