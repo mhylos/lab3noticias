@@ -16,6 +16,7 @@ include("cnn.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 
@@ -37,7 +38,7 @@ include("cnn.php");
                 <section class="rounded p-2">
                     <h2>Noticias recientes</h2>
                     <hr>
-                    <div id="recentnewsCarousel" class="carousel slide rounded" data-ride="carousel">
+                    <div id="recentnewsCarousel" class="carousel slide rounded" data-bs-ride="carousel">
                         <div class="carousel-inner text-center">
                             <?php
                             $sql = "SELECT titulo, imagen FROM tabla_noticia ORDER BY fecha DESC LIMIT 3    ;";
@@ -46,7 +47,7 @@ include("cnn.php");
                             while ($mostrar = mysqli_fetch_array($result)) {
                                 echo "<div class='carousel-item $active'>";
                                 echo "  <div class='image-container my-2 rounded'>";
-                                echo "      <img class='img-fluid rounded-top' src='assets/img/$mostrar[1]' alt=''>";
+                                echo "      <img class='img-fluid rounded-top' src='assets/img/$mostrar[1]' alt='assets/img/$mostrar[1]'>";
                                 echo "  </div>";
                                 echo "  <div class='titulo-container text-start'>";
                                 echo "      <h4 class='p-1'>$mostrar[0] </h4>";
